@@ -1,0 +1,10 @@
+{
+    "author":{
+        "name": "Nehem",
+        "bio":"Software Engineer & Systems Architect"
+    },
+    "site":{
+        "title":"Notes on systems, scale, and software reality",
+        "url":"https://nehem.dev"
+    }
+}

@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ title }} — {{ site_title }}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap"
+        rel="stylesheet" />
+
+    <style>
+        /* --- VARIABLES & ASSETS --- */
+        :root {
+            --bg-body: #fbf9f5;
+            /* Slightly warmer/older paper */
+            --bg-sidebar: #f2efe9;
+            --text-main: #111111;
+            --text-muted: #555555;
+
+            /* "Blueprint Ink" - A deep, rich technical blue */
+            --accent: #203040;
+
+            --highlight: #0044cc;
+            --border-color: #d8d4cd;
+
+            --font-serif: "Merriweather", serif;
+            --font-mono: "JetBrains Mono", monospace;
+
+            --sidebar-width: 360px;
+            --max-read-width: 740px;
+
+            /* Detailed Grid Pattern */
+            --bg-grid: linear-gradient(to right,
+                    rgba(32, 48, 64, 0.03) 1px,
+                    transparent 1px),
+                linear-gradient(to bottom,
+                    rgba(32, 48, 64, 0.03) 1px,
+                    transparent 1px);
+        }
+
+        /* --- RESET & BASE --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-serif);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: var(--highlight);
+            text-decoration: none;
+            font-weight: 700;
+            border-bottom: 1px solid transparent;
+            transition: 0.2s;
+        }
+
+        a:hover {
+            border-bottom-color: var(--highlight);
+        }
+
+        /* --- LAYOUT GRID --- */
+        .layout {
+            display: grid;
+            grid-template-columns: 1fr var(--sidebar-width);
+            min-height: 100vh;
+        }
+
+        /* --- MAIN CONTENT AREA --- */
+        .content-wrapper {
+            padding: 5rem 6rem;
+            /* Blueprint Grid Background */
+            background-size: 20px 20px;
+            background-image: var(--bg-grid);
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* Technical Crosshairs in corners of content area */
+        .content-wrapper::after,
+        .content-wrapper::before {
+            content: "+";
+            position: absolute;
+            font-family: var(--font-mono);
+            color: var(--accent);
+            opacity: 0.5;
+            font-size: 1.5rem;
+            font-weight: 300;
+        }
+
+        .content-wrapper::before {
+            top: 1rem;
+            left: 1rem;
+        }
+
+        .content-wrapper::after {
+            bottom: 1rem;
+            left: 1rem;
+        }
+
+        .article-container {
+            width: 100%;
+            max-width: var(--max-read-width);
+            background: #fff;
+            /* White sheet on top of grid */
+            padding: 3rem 4rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 10px 10px 0px rgba(32, 48, 64, 0.03);
+            /* Hard shadow, not blurry */
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: var(--font-mono);
+            color: var(--accent);
+            letter-spacing: -0.02em;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        /* NEW H2 LOOK: Technical Block Label */
+        h2,
+        h3 {
+            font-size: 1.4rem;
+            margin-top: 3.5rem;
+            margin-bottom: 1.5rem;
+
+            /* The "Label" Look */
+            border-left: 6px solid var(--accent);
+            padding-left: 1rem;
+            background: linear-gradient(90deg,
+                    rgba(32, 48, 64, 0.05) 0%,
+                    rgba(255, 255, 255, 0) 100%);
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            display: block;
+            width: 100%;
+        }
+
+        p {
+            margin-bottom: 1.6rem;
+            font-size: 1.05rem;
+        }
+
+        code {
+            background: rgba(32, 48, 64, 0.06);
+            padding: 2px 6px;
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            color: var(--accent);
+            border-radius: 2px;
+        }
+
+        blockquote {
+            border-left: 2px solid var(--accent);
+            padding-left: 1.5rem;
+            font-style: italic;
+            color: var(--text-muted);
+            margin: 2.5rem 0;
+            font-family: var(--font-serif);
+        }
+
+        .meta {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1rem;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        /* --- RULER DIVIDER --- */
+        .technical-ruler {
+            width: 100%;
+            height: 30px;
+            margin: 0 0 3rem 0;
+            background-image: repeating-linear-gradient(90deg,
+                    var(--accent),
+                    var(--accent) 1px,
+                    transparent 1px,
+                    transparent 10px);
+            background-size: 100% 10px;
+            background-position: bottom;
+            background-repeat: no-repeat;
+            position: relative;
+            opacity: 0.5;
+        }
+
+        /* Add larger ticks to ruler */
+        .technical-ruler::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 15px;
+            background-image: repeating-linear-gradient(90deg,
+                    var(--accent),
+                    var(--accent) 1px,
+                    transparent 1px,
+                    transparent 50px);
+        }
+
+        /* --- TABLES --- */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2.5rem 0;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            border: 1px solid var(--accent);
+        }
+
+        th,
+        td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border-color);
+            text-align: left;
+        }
+
+        th {
+            background: var(--accent);
+            color: #fff;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(32, 48, 64, 0.02);
+        }
+
+        /* --- SIDEBAR --- */
+        .sidebar {
+            background-color: var(--bg-sidebar);
+            padding: 3rem 2.5rem;
+            height: 100vh;
+            position: sticky;
+            top: 0;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            border-left: 3px solid rgba(0, 0, 0, 0.05);
+
+            /* Protractor / Technical Drawing Watermark */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 500'%3E%3Cg fill='none' stroke='%232c3e50' stroke-width='1' opacity='0.08'%3E%3Ccircle cx='250' cy='250' r='200'/%3E%3Ccircle cx='250' cy='250' r='150' stroke-dasharray='5,5'/%3E%3Cline x1='50' y1='250' x2='450' y2='250'/%3E%3Cline x1='250' y1='50' x2='250' y2='450'/%3E%3Cpath d='M250,250 L423,150' /%3E%3Cpath d='M250,250 L76,150' /%3E%3C/g%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center 80%;
+            background-size: 90%;
+        }
+
+        .brand {
+            font-family: var(--font-mono);
+            font-weight: 900;
+            font-size: 1.75rem;
+            color: var(--accent);
+            letter-spacing: -1px;
+            padding-bottom: 1rem;
+            border-bottom: 3px double var(--border-color);
+        }
+
+        .brand span {
+            color: var(--highlight);
+        }
+
+        .sidebar-section h3 {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Technical Pen Icon before sidebar headers */
+        .sidebar-section h3::before {
+            content: '';
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            margin-right: 8px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232c3e50' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 19l7-7 3 3-7 7-3-3z'/%3E%3Cpath d='M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z'/%3E%3Cpath d='M2 2l7.5 8.6'/%3E%3Cpath d='M11 11l-4.3 4.3'/%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.7;
+        }
+
+        .nav-links {
+            list-style: none;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+        }
+
+        .nav-links li {
+            margin-bottom: 1rem;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            display: block;
+        }
+
+        .nav-links a:hover {
+            color: var(--highlight);
+            text-decoration: none;
+            transform: translateX(5px);
+        }
+
+        /* --- SEARCH WIDGET --- */
+        .search-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--border-color);
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            background: var(--bg-body);
+            transition: 0.2s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        #search-results {
+            margin-top: 10px;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+        }
+
+        .result-item {
+            padding: 8px;
+            border-bottom: 1px dotted var(--border-color);
+            cursor: pointer;
+        }
+
+        .result-item:hover {
+            background: #e9ecef;
+            color: var(--accent);
+        }
+
+        /* --- POST NAVIGATION --- */
+        .post-nav {
+            margin-top: 5rem;
+            padding-top: 2rem;
+            border-top: 4px solid var(--accent);
+            /* Thick solid line to end content */
+            display: flex;
+            justify-content: space-between;
+            font-family: var(--font-mono);
+        }
+
+        .nav-btn {
+            display: flex;
+            flex-direction: column;
+            max-width: 45%;
+        }
+
+        .nav-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .nav-title {
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 1rem;
+            border-bottom: none;
+        }
+
+        .nav-btn.disabled {
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 1000px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                height: auto;
+                position: relative;
+                border-bottom: 2px solid var(--accent);
+                border-left: none;
+                order: 2;
+                padding: 2rem;
+            }
+
+            .content-wrapper {
+                padding: 0;
+                background: var(--bg-body);
+                border-right: none;
+                order: 1;
+                display: block;
+            }
+
+            .content-wrapper::after,
+            .content-wrapper::before {
+                display: none;
+            }
+
+            /* No crosshairs on mobile */
+            .article-container {
+                width: 100%;
+                max-width: 100%;
+                box-shadow: none;
+                border: none;
+                padding: 2rem 1.5rem;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layout">
+        <main class="content-wrapper">
+            <article class="article-container">
+                <header>
+                    <h1>{{ title }}</h1>
+                    <div class="meta">
+                        <span>ID: #{{ date }}</span>
+                        <span>AUTHOR: {{ author_name }}</span>
+                        <span>TAGS: {{ tags }}</span>
+                    </div>
+                </header>
+
+                <div class="technical-ruler"></div>
+
+                <section class="post-body">
+                    {{ content }}
+                </section>
+
+                <!-- Navigation Placeholders - can be populated if simple next/prev logic is added -->
+                <nav class="post-nav">
+                    <!-- Logic for prev/next buttons could be injected here, skipping for now as per plan focus on list -->
+                    <div class="nav-btn disabled">
+                        <span class="nav-label">Previous Node</span>
+                        <span class="nav-title">/// NULL ///</span>
+                    </div>
+
+                    <div class="nav-btn disabled" style="text-align: right">
+                        <span class="nav-label">Next Node</span>
+                        <span class="nav-title">/// NULL ///</span>
+                    </div>
+                </nav>
+            </article>
+        </main>
+
+        <aside class="sidebar">
+            <div class="brand">
+                NEHEM<span>.DEV</span>
+                <p style="font-size: 0.9rem; font-family: var(--font-serif);">
+                    {{ site_title }}
+                </p>
+
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Search Archive</h3>
+                <div class="search-box">
+                    <input type="text" id="search-input" class="search-input" placeholder="> Query database...">
+                    <div id="search-results"></div>
+                </div>
+            </div>
+
+
+
+            <div class="sidebar-section">
+                <h3>Recent entries</h3>
+                <ul class="nav-links">
+                    {{ sidebar_links }}
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <script>
+        // --- PURE JS SEARCH ---
+        // In a real static site generator, this list would be populated during build time.
+        const posts = [
+            {{ search_index_js }}
+    ];
+
+        const input = document.getElementById("search-input");
+        const resultsContainer = document.getElementById("search-results");
+
+        input.addEventListener("input", (e) => {
+            const query = e.target.value.toLowerCase();
+            resultsContainer.innerHTML = "";
+
+            if (query.length < 2) return;
+
+            const filtered = posts.filter((post) =>
+                post.title.toLowerCase().includes(query)
+            );
+
+            if (filtered.length === 0) {
+                resultsContainer.innerHTML =
+                    '<div class="result-item" style="color: var(--text-muted);">// No records.</div>';
+            } else {
+                filtered.forEach((post) => {
+                    const div = document.createElement("div");
+                    div.className = "result-item";
+                    div.textContent = `> ${post.title}`;
+                    div.onclick = () => (window.location.href = post.url);
+                    resultsContainer.appendChild(div);
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
