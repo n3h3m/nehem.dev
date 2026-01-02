@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ title }} — {{ site_title }}</title>
+    <title>Home — Notes on systems, scale & software reality</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -466,22 +466,73 @@
         <main class="content-wrapper">
             <article class="article-container">
                 <header>
-                    <h1>{{ title }}</h1>
+                    <h1>Home</h1>
                     <div class="meta">
-                        <span>ON:{{ date }}</span>
-                        <span>AUTHOR:{{ author_name }}</span>
-                        <span>TAGS: {{ tags }}</span>
+                        <span>ON:2026-01-02</span>
+                        <span>AUTHOR:Nehem</span>
+                        <span>TAGS: INDEX</span>
                     </div>
                 </header>
 
                 <div class="technical-ruler"></div>
 
                 <section class="post-body">
-                    {{ content }}
+                    <h1>Recent Posts</h1><div class='technical-ruler'></div>
+        <div style="margin-bottom: 2rem;">
+            <h2><a href="store-every-datetime-as-naive-asiashanghai.html">Store Every Datetime as Naive Asia:Shanghai</a></h2>
+            <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.5rem;">
+                2025-12-31 | timezone, china, utc, utz
+            </div>
+            <p><h3>Why I (and many others) store every Datetime as naive Asia/Shanghai - Why <code>UTZ</code> might become the next global default</h3>
+<p>After more than a decade of fighting timezone bugs across di...</p>
+            <a href="store-every-datetime-as-naive-asiashanghai.html">Read more -></a>
+        </div>
+        
+        <div style="margin-bottom: 2rem;">
+            <h2><a href="dst-is-a-bug,-not-a-feature.html">DST Is a Bug, Not a Feature</a></h2>
+            <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.5rem;">
+                2025-08-03 | DST, DaylightSaving
+            </div>
+            <p><h3>DST Is a Bug, Not a Feature: Countries That Ditched It (and Didn't Regret It)</h3>
+<p>Daylight Saving Time isn't "saving" anything. It's a 100-year-old hack that introduces twice-yearly bugs into ...</p>
+            <a href="dst-is-a-bug,-not-a-feature.html">Read more -></a>
+        </div>
+        
+        <div style="margin-bottom: 2rem;">
+            <h2><a href="why-microservices-are-a-luxury-tax-on-startups.html">Why Microservices Are a Luxury Tax on Startups</a></h2>
+            <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.5rem;">
+                2025-07-02 | Microservices, Monolith, Startup, Scalability
+            </div>
+            <p><h2>Monoliths Win at Scale: Why Microservices Are a Luxury Tax on Startups</h2>
+<p>It's 2025 and the discourse is still stuck in 2015: "Microservices = scale. Monoliths = legacy." Meanwhile, real star...</p>
+            <a href="why-microservices-are-a-luxury-tax-on-startups.html">Read more -></a>
+        </div>
+        
+        <div style="margin-bottom: 2rem;">
+            <h2><a href="the-problems-with-django-rest-framework.html">The Problems with Django REST Framework</a></h2>
+            <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.5rem;">
+                2025-02-02 | django, rest, api, drf
+            </div>
+            <p><h3>“Django REST Framework: The Over-Engineered Greedy Corpse of Django Forms That Refuses to Die"</h3>
+<p>Let's start by burying REST itself real quick, because DRF is built on the rotting foundation...</p>
+            <a href="the-problems-with-django-rest-framework.html">Read more -></a>
+        </div>
+        
+        <div style="margin-bottom: 2rem;">
+            <h2><a href="why-is-python-unsuitable-as-a-mobile-application-development-language.html">Why is Python unsuitable as a mobile application development language</a></h2>
+            <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.5rem;">
+                2016-07-16 | python, mobiledevelopment, python3
+            </div>
+            <p><p><strong>Why is Python unsuitable as a mobile application development language?</strong></p>
+<p><strong>tl;dr</strong><br />
+PSF made migrating to Python 3 as priority to the community, which slowed...</p>
+            <a href="why-is-python-unsuitable-as-a-mobile-application-development-language.html">Read more -></a>
+        </div>
+        
                 </section>
 
                 <!-- Navigation Placeholders - populated dynamically -->
-                {{ post_nav }}
+                
             </article>
         </main>
 
@@ -490,7 +541,7 @@
                 <a href="index.html" style="color: inherit; text-decoration: none;">NEHEM<span>.DEV</span></a>
                 <p
                     style="font-size: 1rem; font-family: var(--font-mono); color: var(--text-muted); margin-top: 0.5rem;">
-                    {{ site_title }}
+                    Notes on systems, scale & software reality
                 </p>
 
             </div>
@@ -508,7 +559,12 @@
             <div class="sidebar-section">
                 <h3>Recent entries</h3>
                 <ul class="nav-links">
-                    {{ sidebar_links }}
+                    <li><a href="store-every-datetime-as-naive-asiashanghai.html">Store Every Datetime as Naive Asia:Shanghai</a></li>
+<li><a href="dst-is-a-bug,-not-a-feature.html">DST Is a Bug, Not a Feature</a></li>
+<li><a href="why-microservices-are-a-luxury-tax-on-startups.html">Why Microservices Are a Luxury Tax on Startups</a></li>
+<li><a href="the-problems-with-django-rest-framework.html">The Problems with Django REST Framework</a></li>
+<li><a href="why-is-python-unsuitable-as-a-mobile-application-development-language.html">Why is Python unsuitable as a mobile application development language</a></li>
+
                 </ul>
             </div>
         </aside>
@@ -518,7 +574,11 @@
         // --- PURE JS SEARCH ---
         // In a real static site generator, this list would be populated during build time.
         const posts = [
-            {{ search_index_js }}
+            {"title": "Store Every Datetime as Naive Asia:Shanghai", "url": "store-every-datetime-as-naive-asiashanghai.html"},
+{"title": "DST Is a Bug, Not a Feature", "url": "dst-is-a-bug,-not-a-feature.html"},
+{"title": "Why Microservices Are a Luxury Tax on Startups", "url": "why-microservices-are-a-luxury-tax-on-startups.html"},
+{"title": "The Problems with Django REST Framework", "url": "the-problems-with-django-rest-framework.html"},
+{"title": "Why is Python unsuitable as a mobile application development language", "url": "why-is-python-unsuitable-as-a-mobile-application-development-language.html"}
     ];
 
         const input = document.getElementById("search-input");

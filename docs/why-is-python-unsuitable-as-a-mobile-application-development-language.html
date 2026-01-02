@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ title }} — {{ site_title }}</title>
+    <title>Why is Python unsuitable as a mobile application development language — Notes on systems, scale & software reality</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -466,22 +466,53 @@
         <main class="content-wrapper">
             <article class="article-container">
                 <header>
-                    <h1>{{ title }}</h1>
+                    <h1>Why is Python unsuitable as a mobile application development language</h1>
                     <div class="meta">
-                        <span>ON:{{ date }}</span>
-                        <span>AUTHOR:{{ author_name }}</span>
-                        <span>TAGS: {{ tags }}</span>
+                        <span>ON:2016-07-16</span>
+                        <span>AUTHOR:Nehem</span>
+                        <span>TAGS: python, mobiledevelopment, python3</span>
                     </div>
                 </header>
 
                 <div class="technical-ruler"></div>
 
                 <section class="post-body">
-                    {{ content }}
+                    <p><strong>Why is Python unsuitable as a mobile application development language?</strong></p>
+<p><strong>tl;dr</strong><br />
+PSF made migrating to Python 3 as priority to the community, which slowed down pythonic innovations during 2006-2016, which was the defining moment in history of modern Web technologies &amp; Mobile Technologies.</p>
+<p><strong>The Root Cause: The Launch of Python 3</strong><br />
+Python 3 was launched in 2008 and it didn't take off as quick as PSF expected. In order to overcome the gravity of Python 2.7 they had to deliberately kill Python 2 using numerous strategies, the main strategy is stop adding new features to Python 2.7 (a.k.a simply abandoning the world’s most popular dynamically typed language of that time).</p>
+<p>On the contrast there were various communities that kept back-porting new Python 3 features to Python 2.7 which further slowed down Python 3 adaption. So they have to press the kill switch by declaring as Python 2.7 as legacy despite the consequences, you have to remember Python 2 was having the most modern feature set of that time compared to C, C++, Perl, Java etc. There was nothing legacy about it.</p>
+<p><strong>The Nightmare of the 10-Year Transition Period (Roughly 2008–2018, with Full EOL in 2020)</strong><br />
+Those 10 years transition period was a great nightmare at the worst, communities(esp library owners) were forced to keep their code compatible with both 2 &amp; 3, which caused the testing cost to sky-rocket, this impacted developers' freedom of thinking, free flow of ideas etc. What once was a simple and elegant language suddenly became a liability because you were ‘expected’ to write in both Python 2 &amp; 3. Productivity was the original thing that made Python popular which wasn’t the experience during the transition.</p>
+<p><strong>The Emergence of "Python X"</strong><br />
+In the whole 10 years Pytonists were neither coding in Python 2 nor in Python 3 there were coding an in between language(Python X) filled with hodgepodge hacks here and there without clear documentation, there were enough official guidelines for porting to Python 3 but not for maintaining the code in Python 2 &amp; 3 since they genuinely didn’t expect such a problem would arise.</p>
+<p><strong>Challenges for Library Maintainers vs End Users</strong><br />
+Porting from 2 -&gt; 3 was easy for an end user, but as a library owner maintaining for 2 &amp; 3 was a nightmare. Many libraries were simply abandoned.</p>
+<p><strong>Impact on Learning and Resources</strong><br />
+Learning experience of Python via internet met the all time low, Googling questions would lead to blog posts and Stackoverflow which had snippets for Python 2. Every archived knowledge (even as simple as ‘sorting a dict’) had to be re-written once again for Python 3 and tagged with proper Python versions. This part caused great confusion for newbies and made JavaScript as a possible first language. Most of the Stack overflow answers stopped working suddenly since they were originally written for Python 2. New answers were not written as often asking same question for Python 3 will cause the question to be down-voted, locked &amp; deleted or marked as duplicate by less informed random moderators who weren’t aware of this Python specific issue, also Stackoverflow was not designed to converse around questions of multiple versions of a same programming language.</p>
+<p><strong>Decline of GUI and Cross-Platform Tools</strong><br />
+Great tools like WxPython, PyQT, PySide became old &amp; oblivious because 'Python 3' was suddenly imposed as priority. (Imagine you as a open source developer, suddenly PSF/community declares your work as deprecated, you might lose the spirit, you wouldn’t care much, that’s what happened to 100s of libraries, great libraries were declared legacy even thought they were working fine, just because PSF wanted to push Python3. It wasn’t indeed to kill 100s libraries just because the author didn’t have time/interest in porting(a.k.a maintaining in 2&amp;3)</p>
+<p><strong>The Hidden Cost for Library Owners</strong><br />
+The experience of porting to Python 3 was not as easy as you imagine or the PSF thought. For a developer it may be simply moving to 2 to 3. But for a library owner it is all about ‘maintaining’ 2 and 3 at the same time, with added testing cost.</p>
+<p><strong>Lack of Innovation During a Critical Decade</strong><br />
+Thus, everyone witnessed that during 2006 to 2016 there were no innovation or ground breaking things happened in Python's world, they were busy in solving Python 3 transition (porting &amp; maintaining) and releasing small features by barely keeping the heads on the water. However we all knew 2006-2016 was the defining moment of web technology and mobile technologies.</p>
+<p>JavaScript started dominating everywhere with revolutionary frameworks and new ways of doing things(like non-blocking IO, web sockets etc) while Python community were busting their head around in cleaning the mess. Python 3 is good but wrongly timed. This is why Python doesn't have a suitable cross platform framework for mobile.</p>
+<p>While C# has Xamarin, JS has Cordova &amp; Titanium, even Lua has Corona, but Python equivalents Kivy and PyQT do keep stalling.</p>
+<p><strong>Python's Strengths in Other Domains</strong><br />
+However, Python will have a strong future on the machine learning, NLP, statistical and scientific computing. So to repeat the point Python lost whatever it deserved from 2006–2016, but it will dominate what it really deserves from 2016–2026, unfortunately mobile development(front-end) isn’t one of them.</p>
                 </section>
 
                 <!-- Navigation Placeholders - populated dynamically -->
-                {{ post_nav }}
+                <nav class="post-nav">
+            <div class="nav-btn disabled">
+                <span class="nav-label">Previous Node</span>
+                <span class="nav-title">/// NULL ///</span>
+            </div>
+            <a href="the-problems-with-django-rest-framework.html" class="nav-btn" style="text-align: right">
+                <span class="nav-label">Next Node</span>
+                <span class="nav-title">The Problems with Django REST Framework</span>
+            </a></nav>
             </article>
         </main>
 
@@ -490,7 +521,7 @@
                 <a href="index.html" style="color: inherit; text-decoration: none;">NEHEM<span>.DEV</span></a>
                 <p
                     style="font-size: 1rem; font-family: var(--font-mono); color: var(--text-muted); margin-top: 0.5rem;">
-                    {{ site_title }}
+                    Notes on systems, scale & software reality
                 </p>
 
             </div>
@@ -508,7 +539,12 @@
             <div class="sidebar-section">
                 <h3>Recent entries</h3>
                 <ul class="nav-links">
-                    {{ sidebar_links }}
+                    <li><a href="store-every-datetime-as-naive-asiashanghai.html">Store Every Datetime as Naive Asia:Shanghai</a></li>
+<li><a href="dst-is-a-bug,-not-a-feature.html">DST Is a Bug, Not a Feature</a></li>
+<li><a href="why-microservices-are-a-luxury-tax-on-startups.html">Why Microservices Are a Luxury Tax on Startups</a></li>
+<li><a href="the-problems-with-django-rest-framework.html">The Problems with Django REST Framework</a></li>
+<li><a href="why-is-python-unsuitable-as-a-mobile-application-development-language.html">Why is Python unsuitable as a mobile application development language</a></li>
+
                 </ul>
             </div>
         </aside>
@@ -518,7 +554,11 @@
         // --- PURE JS SEARCH ---
         // In a real static site generator, this list would be populated during build time.
         const posts = [
-            {{ search_index_js }}
+            {"title": "Store Every Datetime as Naive Asia:Shanghai", "url": "store-every-datetime-as-naive-asiashanghai.html"},
+{"title": "DST Is a Bug, Not a Feature", "url": "dst-is-a-bug,-not-a-feature.html"},
+{"title": "Why Microservices Are a Luxury Tax on Startups", "url": "why-microservices-are-a-luxury-tax-on-startups.html"},
+{"title": "The Problems with Django REST Framework", "url": "the-problems-with-django-rest-framework.html"},
+{"title": "Why is Python unsuitable as a mobile application development language", "url": "why-is-python-unsuitable-as-a-mobile-application-development-language.html"}
     ];
 
         const input = document.getElementById("search-input");
